@@ -11,6 +11,10 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface SysLog {
-
-        String description() default "";
+    /**
+     * 日志描述信息
+     *
+     * @return
+     */
+    String description() default "";
 }

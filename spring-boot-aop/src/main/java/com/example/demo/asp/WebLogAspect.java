@@ -28,7 +28,7 @@ public class WebLogAspect {
 	private Logger logger = LogManager.getLogger(WebLogAspect.class);
 
 	/**
-	 * 定义切入点，切入点为com.amdox.serviceapi下的所有函数
+	 * 定义切入点，切入点为com.example.demo 下所有函数
 	 */
 	@Pointcut("execution(public * com.example.demo..*.*(..))")
 	public void webLog(){}
