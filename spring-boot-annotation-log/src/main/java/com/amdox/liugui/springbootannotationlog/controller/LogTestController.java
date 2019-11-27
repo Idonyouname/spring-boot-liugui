@@ -1,12 +1,8 @@
 package com.amdox.liugui.springbootannotationlog.controller;
 
-import com.alibaba.fastjson.JSONObject;
 import com.amdox.liugui.springbootannotationlog.annotation.SysLog;
-import org.slf4j.Logger;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Date;
 
 /**
  * @ClassName: LogTestController
@@ -15,14 +11,6 @@ import java.util.Date;
  **/
 @RestController
 public class LogTestController {
-
-    @GetMapping("/now")
-    public String now(){
-        // 从缓存中获取日志
-        Logger logger = LoggerCache.getLoggerByClassName(this.getClass().getName());
-        logger.info("自定义日志 ==》 日志内容。。。");
-        return JSONObject.toJSONString(new Date());
-    }
 
     @GetMapping("/hello")
     @SysLog()
