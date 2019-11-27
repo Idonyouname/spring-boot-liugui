@@ -14,8 +14,8 @@ public class LogMain {
 
         log.debug("debug...");
         log.info("info...");
-        log.error("error...");
         log.warn("warn...");
+        log.error("error...");
 
         log.info("logging begin...");
         try {
