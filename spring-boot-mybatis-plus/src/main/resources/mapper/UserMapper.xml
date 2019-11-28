@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liugui.springbootmybatisplus.mapper.UserMapper">
+    <resultMap id="BaseMap" type="com.liugui.springbootmybatisplus.model.SysUser">
+        <id property="userId" jdbcType="INTEGER" column="user_id"/>
+        <result property="userName" jdbcType="VARCHAR" column="user_name"/>
+        <result property="userAge" jdbcType="INTEGER" column="user_age"/>
+        <result property="userSex" jdbcType="INTEGER" column="user_sex"/>
+    </resultMap>
+    <sql id="Base_Sql">
+    user_id ,user_name , user_age, user_sex
+    </sql>
+    <select id="selectPageVo" resultType="com.liugui.springbootmybatisplus.model.SysUser">
+        select <include refid="Base_Sql"/> from sys_user
+        where user_name like CONCAT(CONCAT('%', #{userName,jdbcType=VARCHAR}), '%')
+    </select>
+</mapper>

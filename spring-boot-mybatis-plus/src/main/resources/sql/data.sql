@@ -1,0 +1,1 @@
+INSERT INTO SYS_USER(user_id,user_name)  VALUES(1,'liugui0'),(2,'liugui1'),(3,'liugui2'),(4,'liugui3'),(5,'liugui4'),(6,'liugui5');
