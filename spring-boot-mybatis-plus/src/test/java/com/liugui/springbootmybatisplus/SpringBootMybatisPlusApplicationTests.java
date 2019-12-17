@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.liugui.springbootmybatisplus.mapper.UserMapper;
 import com.liugui.springbootmybatisplus.model.SysUser;
+import jdk.nashorn.internal.runtime.JSONFunctions;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -28,9 +29,10 @@ class SpringBootMybatisPlusApplicationTests {
     public void testSelectByPage(){
         this.start();
         Page<SysUser> page = new Page<>();
-        page.setCurrent(2);
-        page.setSize(3);
+        page.setCurrent(1);
+        page.setSize(2);
         IPage<SysUser> sysUserIPage = userMapper.selectPageVo(page,"liugui");
+        System.out.println(sysUserIPage);
         List<SysUser> userDoList = sysUserIPage.getRecords();
         userDoList.forEach(System.out::println);
         this.end();
