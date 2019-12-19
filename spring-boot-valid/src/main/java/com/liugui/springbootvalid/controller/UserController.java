@@ -19,10 +19,14 @@ import javax.validation.constraints.NotNull;
 public class UserController {
 
     /**
+     * 利用全局异常拦截 抛出异常 将自定义message信息返给用户
+     */
+
+    /**
      * 单参数效验
      */
     @RequestMapping("/removeUserVo")
-    public String removeUserVo(@Valid @NotNull(message = "传入参数不能为空") Integer id){
+    public String removeUserVo(@NotNull(message = "传入参数不能为空") Integer id){
         return "操作成功 " + id;
     }
 
