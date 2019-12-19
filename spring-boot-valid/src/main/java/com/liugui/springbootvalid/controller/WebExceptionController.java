@@ -38,12 +38,11 @@ public class WebExceptionController {
 
     /**
      *
-     * 单参数 @NotNull 效验异常处理
+     * 单参数 @NotNull @NotBlank @NotEmpty 效验异常处理
      */
     @ExceptionHandler(value = ConstraintViolationException.class)
     public String HandleConstraintViolationException(ConstraintViolationException e){
         logger.error("参数校验异常",e);
-        System.out.println("ConstraintViolations:" + e.getConstraintViolations().toString());
         if (null != e.getConstraintViolations() && !ObjectUtils.isEmpty(e.getConstraintViolations())) {
             String message = e.getMessage().substring(e.getMessage().indexOf(":"),e.getMessage().length());
             return JSON.toJSONString(new Msg<>().fail().setCode(message));

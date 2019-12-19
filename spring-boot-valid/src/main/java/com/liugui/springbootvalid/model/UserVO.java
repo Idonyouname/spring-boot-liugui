@@ -26,7 +26,7 @@ public class UserVO {
     @NotNull(groups = Update.class,message = "用户id不能为空")
     private Integer id;
     //用户名
-    @NotNull(groups = Add.class,message = "用户名不能为空")
+    @NotBlank(groups = Add.class,message = "用户名不能为空")
     private String userName;
     //用户密码
     private String password;
