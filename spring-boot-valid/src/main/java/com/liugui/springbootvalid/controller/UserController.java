@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -16,6 +16,7 @@ import javax.validation.constraints.NotNull;
  **/
 @RestController
 @RequestMapping("/user")
+@Validated
 public class UserController {
 
     /**
@@ -23,7 +24,7 @@ public class UserController {
      */
 
     /**
-     * 单参数效验
+     * 单参数 @NotNull 效验
      */
     @RequestMapping("/removeUserVo")
     public String removeUserVo(@NotNull(message = "传入参数不能为空") Integer id){

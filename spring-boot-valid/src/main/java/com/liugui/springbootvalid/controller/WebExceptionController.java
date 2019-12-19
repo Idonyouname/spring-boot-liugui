@@ -10,6 +10,9 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import javax.validation.ConstraintViolationException;
+import javax.validation.UnexpectedTypeException;
+
 /**
  * @Description 全局异常处理
  * @Auther liugui
@@ -33,6 +36,20 @@ public class WebExceptionController {
         return JSON.toJSONString(new Msg<>().fail().setCode("参数校验异常"));
     }
 
+    /**
+     *
+     * 单参数 @NotNull 效验异常处理
+     */
+    @ExceptionHandler(value = ConstraintViolationException.class)
+    public String HandleConstraintViolationException(ConstraintViolationException e){
+        logger.error("参数校验异常",e);
+        System.out.println("ConstraintViolations:" + e.getConstraintViolations().toString());
+        if (null != e.getConstraintViolations() && !ObjectUtils.isEmpty(e.getConstraintViolations())) {
+            String message = e.getMessage().substring(e.getMessage().indexOf(":"),e.getMessage().length());
+            return JSON.toJSONString(new Msg<>().fail().setCode(message));
+        }
+        return JSON.toJSONString(new Msg<>().fail().setCode("参数校验异常"));
+    }
 
     /**
      * 参数效验异常处理
