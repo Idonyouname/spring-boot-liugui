@@ -15,3 +15,4 @@
   * webSocket - 全双工通讯协议
   * scheduled - spring@scheduled 定时任务
   * quartz
+  * gradle yml配置初体验
