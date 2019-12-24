@@ -1,5 +1,6 @@
 package com.liugui.springbootscheduled.scheduled;
 
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -20,6 +21,7 @@ public class ScheduledTask {
     //  corn从左到右（用空格隔开）：秒 分 小时 月份中的日期 月份 星期中的日期 年份
 
     @Scheduled(cron = "0 * 11 * * ?")
+    @Async
     public void scheduledTask1(){
         System.out.println("定时任务1");
     }
@@ -37,6 +39,7 @@ public class ScheduledTask {
     }
     //fixedRate  下次执行时间，从任务开始运行时 开始计时。
     @Scheduled(initialDelay =  1000 * 10,fixedRate = 1000 * 5)
+    @Async
     public void scheduledTask3(){
         System.out.println("任务3执行时间："+LocalTime.now());
         System.out.println("定时任务3");
