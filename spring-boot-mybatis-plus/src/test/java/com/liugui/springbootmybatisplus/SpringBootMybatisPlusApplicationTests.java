@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.liugui.springbootmybatisplus.mapper.UserMapper;
 import com.liugui.springbootmybatisplus.model.SysUser;
+import com.liugui.springbootmybatisplus.service.IUserService;
 import jdk.nashorn.internal.runtime.JSONFunctions;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
@@ -23,7 +24,7 @@ class SpringBootMybatisPlusApplicationTests {
     }
 
     @Resource
-    private UserMapper userMapper;
+    private IUserService userService;
 
     @Test
     public void testSelectByPage(){
@@ -31,7 +32,7 @@ class SpringBootMybatisPlusApplicationTests {
         Page<SysUser> page = new Page<>();
         page.setCurrent(1);
         page.setSize(2);
-        IPage<SysUser> sysUserIPage = userMapper.selectPageVo(page,"liugui");
+        IPage<SysUser> sysUserIPage = userService.selectPageVo(page,"liugui");
         System.out.println(sysUserIPage);
         List<SysUser> userDoList = sysUserIPage.getRecords();
         userDoList.forEach(System.out::println);
@@ -42,7 +43,7 @@ class SpringBootMybatisPlusApplicationTests {
     @Test
     public void testSelect(){
         this.start();
-        List<SysUser>  userDoList = userMapper.selectList(null);
+        List<SysUser>  userDoList = userService.list(null);
         userDoList.forEach(System.out::println);
         this.end();
     }
@@ -55,8 +56,8 @@ class SpringBootMybatisPlusApplicationTests {
         sysUser.setUserName("liugui6");
         sysUser.setUserAge(20);
         sysUser.setUserSex(1);
-        int addUserFlag = userMapper.insert(sysUser);
-        Assert.assertEquals(1,addUserFlag);
+        boolean addUserFlag = userService.save(sysUser);
+        Assert.assertTrue(addUserFlag);
         this.end();
         this.testSelect();
     }
