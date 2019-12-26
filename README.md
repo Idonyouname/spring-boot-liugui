@@ -5,7 +5,6 @@
 [![GitHub forks](https://img.shields.io/github/forks/Idonyouname/spring-boot-liugui.svg?style=flat&label=Fork)](https://github.com/Idonyouname/spring-boot-liugui/fork)
 [![GitHub watchers](https://img.shields.io/github/watchers/Idonyouname/architect-awesome.svg?style=flat&label=Watch)](https://github.com/Idonyouname/spring-boot-liugui/watchers)
 [![GitHub followers](https://img.shields.io/github/followers/Idonyouname.svg?label=%E5%85%B3%E6%B3%A8)](https://github.com/Idonyouname)
-
 ###spring-boot 集成 其他框架代码   
   * admin监控   
   * log   
