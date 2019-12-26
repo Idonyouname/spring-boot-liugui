@@ -1,12 +1,12 @@
-# spring-boot-liugui
+# spring-boot-liugui 
 
 [![知识共享协议（CC协议）](https://img.shields.io/badge/License-Creative%20Commons-DC3D24.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)
-[![GitHub stars](https://img.shields.io/github/stars/Idonyouname/architect-awesome.svg?style=flat&label=Star)](https://github.com/Idonyouname/spring-boot-liugui/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/Idonyouname/architect-awesome.svg?style=flat&label=Fork)](https://github.com/Idonyouname/spring-boot-liugui/fork)
-[![GitHub watchers](https://img.shields.io/github/watchers/Idonyouname/architect-awesome.svg?style=flat&label=Watch)](https://github.com/Idonyouname/spring-boot-liugui/watchers)
-[![GitHub followers](https://img.shields.io/github/followers/Idonyouname.svg?label=%E5%85%B3%E6%B3%A8)](https://github.com/Idonyouname)  
+[![GitHub stars](https://img.shields.io/github/stars/Idonyouname/spring-boot-liugui.svg?style=flat&label=Star)](https://github.com/Idonyouname/spring-boot-liugui/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/Idonyouname/spring-boot-liugui.svg?style=flat&label=Fork)](https://github.com/Idonyouname/spring-boot-liugui/fork)
+[![GitHub watchers](https://img.shields.io/github/watchers/Idonyouname/spring-boot-liugui.svg?style=flat&label=Watch)](https://github.com/Idonyouname/spring-boot-liugui/watchers)
+[![GitHub followers](https://img.shields.io/github/followers/Idonyouname.svg?label=%E5%85%B3%E6%B3%A8)](https://github.com/Idonyouname)
 
-### spring-boot 集成 其他框架代码   
+### spring-boot 集成 其他框架代码 
   * admin监控   
   * log   
   * aop   
