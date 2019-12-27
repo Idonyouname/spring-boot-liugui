@@ -23,3 +23,4 @@
   * scheduled - spring@scheduled 定时任务
   * quartz
   * gradle yml配置初体验
+  * redis 集成redis非关系型数据库
