@@ -44,7 +44,7 @@ public class WebExceptionController {
     public String HandleConstraintViolationException(ConstraintViolationException e){
         logger.error("参数校验异常",e);
         if (null != e.getConstraintViolations() && !ObjectUtils.isEmpty(e.getConstraintViolations())) {
-            String message = e.getMessage().substring(e.getMessage().indexOf(":"),e.getMessage().length());
+            String message = e.getMessage().substring(e.getMessage().indexOf(":")+1,e.getMessage().length());
             return JSON.toJSONString(new Msg<>().fail().setCode(message));
         }
         return JSON.toJSONString(new Msg<>().fail().setCode("参数校验异常"));

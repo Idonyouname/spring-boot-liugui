@@ -1,6 +1,7 @@
 package com.liugui.springbootvalid.controller;
 
 import com.liugui.springbootvalid.model.UserVO;
+import org.hibernate.validator.constraints.Range;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,7 +49,7 @@ public class UserController {
      * 单参数 @NotNull 效验
      */
     @RequestMapping("/removeUserVo")
-    public String removeUserVo(@NotNull(message = "传入参数不能为空") Integer id){
+    public String removeUserVo(@NotNull(message = "传入参数不能为空") @Range(min = 0,max = 1,message = "最大值为 1，最小值为 0") Integer id){
         return "操作成功 " + id;
     }
 
