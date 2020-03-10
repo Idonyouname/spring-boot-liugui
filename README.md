@@ -24,3 +24,4 @@
   * quartz
   * gradle yml配置初体验
   * redis 集成redis非关系型数据库
+  * netty 集成
