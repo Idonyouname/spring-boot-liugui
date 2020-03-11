@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springbootonlinelog.dao.LogDao">
+
+    <resultMap type="com.example.springbootonlinelog.entity.Log" id="LogMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="description" column="description" jdbcType="VARCHAR"/>
+        <result property="exceptionDetail" column="exception_detail" jdbcType="VARCHAR"/>
+        <result property="logType" column="log_type" jdbcType="VARCHAR"/>
+        <result property="method" column="method" jdbcType="VARCHAR"/>
+        <result property="params" column="params" jdbcType="VARCHAR"/>
+        <result property="requestIp" column="request_ip" jdbcType="VARCHAR"/>
+        <result property="time" column="time" jdbcType="INTEGER"/>
+        <result property="username" column="username" jdbcType="VARCHAR"/>
+        <result property="address" column="address" jdbcType="VARCHAR"/>
+        <result property="browser" column="browser" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="LogMap">
+        select
+          id, create_time, description, exception_detail, log_type, method, params, request_ip, time, username, address, browser
+        from lg_sys.log
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="LogMap">
+        select
+          id, create_time, description, exception_detail, log_type, method, params, request_ip, time, username, address, browser
+        from lg_sys.log
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="LogMap">
+        select
+          id, create_time, description, exception_detail, log_type, method, params, request_ip, time, username, address, browser
+        from lg_sys.log
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="description != null and description != ''">
+                and description = #{description}
+            </if>
+            <if test="exceptionDetail != null and exceptionDetail != ''">
+                and exception_detail = #{exceptionDetail}
+            </if>
+            <if test="logType != null and logType != ''">
+                and log_type = #{logType}
+            </if>
+            <if test="method != null and method != ''">
+                and method = #{method}
+            </if>
+            <if test="params != null and params != ''">
+                and params = #{params}
+            </if>
+            <if test="requestIp != null and requestIp != ''">
+                and request_ip = #{requestIp}
+            </if>
+            <if test="time != null">
+                and time = #{time}
+            </if>
+            <if test="username != null and username != ''">
+                and username = #{username}
+            </if>
+            <if test="address != null and address != ''">
+                and address = #{address}
+            </if>
+            <if test="browser != null and browser != ''">
+                and browser = #{browser}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into lg_sys.log(create_time, description, exception_detail, log_type, method, params, request_ip, time, username, address, browser)
+        values (#{createTime}, #{description}, #{exceptionDetail}, #{logType}, #{method}, #{params}, #{requestIp}, #{time}, #{username}, #{address}, #{browser})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update lg_sys.log
+        <set>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="description != null and description != ''">
+                description = #{description},
+            </if>
+            <if test="exceptionDetail != null and exceptionDetail != ''">
+                exception_detail = #{exceptionDetail},
+            </if>
+            <if test="logType != null and logType != ''">
+                log_type = #{logType},
+            </if>
+            <if test="method != null and method != ''">
+                method = #{method},
+            </if>
+            <if test="params != null and params != ''">
+                params = #{params},
+            </if>
+            <if test="requestIp != null and requestIp != ''">
+                request_ip = #{requestIp},
+            </if>
+            <if test="time != null">
+                time = #{time},
+            </if>
+            <if test="username != null and username != ''">
+                username = #{username},
+            </if>
+            <if test="address != null and address != ''">
+                address = #{address},
+            </if>
+            <if test="browser != null and browser != ''">
+                browser = #{browser},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from lg_sys.log where id = #{id}
+    </delete>
+
+</mapper>
