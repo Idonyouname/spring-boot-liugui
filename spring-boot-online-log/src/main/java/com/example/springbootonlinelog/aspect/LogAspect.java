@@ -2,6 +2,7 @@ package com.example.springbootonlinelog.aspect;
 
 import com.example.springbootonlinelog.entity.Log;
 import com.example.springbootonlinelog.service.LogService;
+import com.example.springbootonlinelog.utils.StringUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.AfterThrowing;

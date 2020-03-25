@@ -3,6 +3,7 @@ package com.example.springbootonlinelog.service.impl;
 import com.example.springbootonlinelog.entity.Log;
 import com.example.springbootonlinelog.dao.LogDao;
 import com.example.springbootonlinelog.service.LogService;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -52,6 +53,11 @@ public class LogServiceImpl implements LogService {
     public Log insert(Log log) {
         this.logDao.insert(log);
         return log;
+    }
+
+    @Override
+    public void save(String username, String browser, String ip, ProceedingJoinPoint joinPoint, Log log) {
+
     }
 
     /**
