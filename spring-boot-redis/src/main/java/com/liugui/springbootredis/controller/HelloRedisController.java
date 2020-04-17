@@ -19,14 +19,21 @@ public class HelloRedisController {
     private RedisUtil redisUtil;
 
     @RequestMapping("/redisSet/{name}")
-    public String redisSet(@PathVariable String name){
+    public String redisSet(@PathVariable String name) {
         redisUtil.set("name", name);
         return "ok";
     }
 
     @RequestMapping("/redisGet/{key}")
-    public String redisGet(@PathVariable String key){
+    public String redisGet(@PathVariable String key) {
         return redisUtil.get(key).toString();
+    }
+
+    @RequestMapping("/redisKeyPastDuePush/{value}")
+    public String redisKeyPastDuePush(@PathVariable String value) {
+        String key = "Phone:13022221111";
+        redisUtil.set(key, value, 3L);
+        return "设置3秒过期键值完成 - 未序列化key";
     }
 
 }

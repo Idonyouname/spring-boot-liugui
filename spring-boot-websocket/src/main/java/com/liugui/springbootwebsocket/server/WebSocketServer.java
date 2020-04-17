@@ -19,6 +19,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Component
 public class WebSocketServer {
     private static       Logger                       log         = LoggerFactory.getLogger(WebSocketServer.class);
+    //当前连接数
     private static final AtomicInteger                onlineCount = new AtomicInteger(0);
     // concurrent包的线程安全Set，用来存放每个客户端对应的Session对象。
     private static       CopyOnWriteArraySet<Session> sessionSet  = new CopyOnWriteArraySet<>();
