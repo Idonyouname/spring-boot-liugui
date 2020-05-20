@@ -1,6 +1,5 @@
-package com.liugui.springbootredis.utils;
+package com.liugui.commonutils.utils;
 
-import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
@@ -117,5 +116,8 @@ public final class RedisUtil {
         return result;
     }
 
-
+    public void getKeys(String pattern){
+        Set<String> set = redisTemplate.keys(pattern);
+        System.out.println(set);
+    }
 }
