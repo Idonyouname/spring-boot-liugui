@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.util.ObjectUtils;
 import org.springframework.validation.BindException;
+import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -62,6 +63,15 @@ public class WebExceptionController {
                     .getDefaultMessage()).fail());
         }
         return JSON.toJSONString(new Msg().setCode("参数校验异常").fail());
+    }
+
+    /**
+     * Assert  参数为空异常拦截
+     */
+    @ExceptionHandler(IllegalArgumentException.class)
+    public String httpMediaTypeNotSupportedException(Exception e) {
+        logger.error("参数错误异常", e);
+        return JSON.toJSONString(new Msg().setCode(e.getMessage()).fail());
     }
 
 }

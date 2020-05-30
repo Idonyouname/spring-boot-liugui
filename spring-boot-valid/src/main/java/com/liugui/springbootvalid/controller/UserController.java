@@ -2,6 +2,7 @@ package com.liugui.springbootvalid.controller;
 
 import com.liugui.springbootvalid.model.UserVO;
 import org.hibernate.validator.constraints.Range;
+import org.springframework.util.Assert;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -67,6 +68,15 @@ public class UserController {
     @RequestMapping("/editUserVo")
     public String editUserVo(@Validated({UserVO.Update.class}) @RequestBody UserVO userVO){
         return "操作成功" + userVO;
+    }
+
+    /**
+     *assert检验
+     */
+    @RequestMapping("/assertNotNull")
+    public String assertNotNull(String notNullStr){
+        Assert.notNull(notNullStr,"传入字符串为空");
+        return "ok";
     }
 
 }
