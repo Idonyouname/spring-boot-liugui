@@ -21,4 +21,14 @@
             </if>
         </trim>
     </select>
+    <select id="selectByStr" parameterType="string" resultMap="BaseMap">
+        select
+        <include refid="Base_Sql"/>
+        from sys_user
+        <where>
+            <if test="str != null and str != ''">
+                CONCAT(user_name,user_age,user_sex) like CONCAT('%', #{str},'%')
+            </if>
+        </where>
+    </select>
 </mapper>

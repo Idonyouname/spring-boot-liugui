@@ -37,4 +37,9 @@ public class UserController {
         return JSON.toJSONString(userDoList);
     }
 
+    @GetMapping("/findUserByMultiCondition")
+    public String findUserByMultiCondition(String conditionStr){
+        return JSON.toJSONString(userMapper.selectByStr(conditionStr));
+    }
+
 }

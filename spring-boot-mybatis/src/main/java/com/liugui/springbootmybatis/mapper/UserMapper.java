@@ -1,6 +1,7 @@
 package com.liugui.springbootmybatis.mapper;
 
 import com.liugui.springbootmybatis.model.UserDo;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -16,4 +17,5 @@ public interface UserMapper {
     int update(UserDo userDo)throws Exception;
     UserDo selectOne(Integer userId);
     List<UserDo> selectListByMap(Map map);
+    List<UserDo> selectByStr(@Param("str") String str);
 }

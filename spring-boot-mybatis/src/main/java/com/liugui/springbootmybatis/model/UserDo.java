@@ -15,6 +15,6 @@ import lombok.NoArgsConstructor;
 public class UserDo {
     private int userId;
     private String userName;
-    private int userSex;
-    private int userAge;
+    private String userSex;
+    private String userAge;
 }
