@@ -2,7 +2,10 @@ package com.example.springbootonlinelog.aspect;
 
 import com.example.springbootonlinelog.entity.Log;
 import com.example.springbootonlinelog.service.LogService;
+import com.example.springbootonlinelog.utils.RequestHolder;
+import com.example.springbootonlinelog.utils.SecurityUtils;
 import com.example.springbootonlinelog.utils.StringUtils;
+import com.example.springbootonlinelog.utils.ThrowableUtil;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.AfterThrowing;
@@ -62,6 +65,19 @@ public class LogAspect {
     @AfterThrowing(pointcut = "logPointcut()", throwing = "e")
     public void logAfterThrowing(JoinPoint joinPoint, Throwable e) {
         //此处计算操作时间 以及存储错误`error`日志信息
+        Log log = new Log("ERROR",System.currentTimeMillis() - currentTime.get());
+        currentTime.remove();
+        log.setExceptionDetail(ThrowableUtil.getStackTrace(e));
+        HttpServletRequest request = RequestHolder.getHttpServletRequest();
+        logService.save(getUsername(), StringUtils.getBrowser(request), StringUtils.getIp(request), (ProceedingJoinPoint)joinPoint, log);
+    }
+
+    public String getUsername() {
+        try {
+            return SecurityUtils.getUsername();
+        }catch (Exception e){
+            return "";
+        }
     }
 
 

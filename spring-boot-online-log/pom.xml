@@ -13,4 +13,16 @@
     <artifactId>spring-boot-online-log</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.lionsoul</groupId>
+            <artifactId>ip2region</artifactId>
+            <version>1.7.2</version>
+        </dependency>
+        <dependency>
+            <groupId>eu.bitwalker</groupId>
+            <artifactId>useragentutils</artifactId>
+            <version>1.20</version>
+        </dependency>
+    </dependencies>
 </project>
