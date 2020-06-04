@@ -2,9 +2,9 @@ package com.example.springbootonlinelog.controller;
 
 import com.example.springbootonlinelog.entity.Log;
 import com.example.springbootonlinelog.service.LogService;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
@@ -20,7 +20,7 @@ public class LogController {
     /**
      * 服务对象
      */
-    @Resource
+    @Resource(name = "oneLogService")
     private LogService logService;
 
     /**
@@ -29,6 +29,7 @@ public class LogController {
      * @param id 主键
      * @return 单条数据
      */
+    @com.example.springbootonlinelog.aop.Log("查询日志")
     @GetMapping("selectOne")
     public Log selectOne(Long id) {
         return this.logService.queryById(id);

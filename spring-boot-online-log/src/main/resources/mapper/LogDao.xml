@@ -18,7 +18,7 @@
     </resultMap>
 
     <!--查询单个-->
-    <select id="queryById" resultMap="LogMap">
+    <select id="queryById" parameterType="long" resultMap="LogMap">
         select
           id, create_time, description, exception_detail, log_type, method, params, request_ip, time, username, address, browser
         from lg_sys.log

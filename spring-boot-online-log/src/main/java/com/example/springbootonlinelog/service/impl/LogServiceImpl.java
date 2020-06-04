@@ -1,12 +1,16 @@
 package com.example.springbootonlinelog.service.impl;
 
+import cn.hutool.json.JSONObject;
 import com.example.springbootonlinelog.entity.Log;
 import com.example.springbootonlinelog.dao.LogDao;
 import com.example.springbootonlinelog.service.LogService;
+import com.example.springbootonlinelog.utils.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.lang.reflect.Method;
 import java.util.List;
 
 /**
@@ -15,7 +19,7 @@ import java.util.List;
  * @author liugui
  * @since 2020-03-11 18:30:03
  */
-@Service("logService")
+@Service("oneLogService")
 public class LogServiceImpl implements LogService {
     @Resource
     private LogDao logDao;
@@ -58,6 +62,45 @@ public class LogServiceImpl implements LogService {
     @Override
     public void save(String username, String browser, String ip, ProceedingJoinPoint joinPoint, Log log) {
 
+        MethodSignature signature = (MethodSignature) joinPoint.getSignature();
+        Method method = signature.getMethod();
+        com.example.springbootonlinelog.aop.Log aopLog = method.getAnnotation(com.example.springbootonlinelog.aop.Log.class);
+
+        // 方法路径
+        String methodName = joinPoint.getTarget().getClass().getName()+"."+signature.getName()+"()";
+
+        StringBuilder params = new StringBuilder("{");
+        //参数值
+        Object[] argValues = joinPoint.getArgs();
+        //参数名称
+        String[] argNames = ((MethodSignature)joinPoint.getSignature()).getParameterNames();
+        if(argValues != null){
+            for (int i = 0; i < argValues.length; i++) {
+                params.append(" ").append(argNames[i]).append(": ").append(argValues[i]);
+            }
+        }
+        // 描述
+        if (log != null) {
+            log.setDescription(aopLog.value());
+        }
+        assert log != null;
+        log.setRequestIp(ip);
+
+        String loginPath = "login";
+        if(loginPath.equals(signature.getName())){
+            try {
+                assert argValues != null;
+                username = new JSONObject(argValues[0]).get("username").toString();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        log.setAddress(StringUtils.getCityInfo(log.getRequestIp()));
+        log.setMethod(methodName);
+        log.setUsername(username);
+        log.setParams(params.toString() + " }");
+        log.setBrowser(browser);
+        logDao.insert(log);
     }
 
     /**

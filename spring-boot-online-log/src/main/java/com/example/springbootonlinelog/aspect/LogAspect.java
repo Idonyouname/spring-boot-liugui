@@ -10,7 +10,9 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -20,14 +22,14 @@ import javax.servlet.http.HttpServletRequest;
  * @Author: liugui
  * @Date: 2020-03-11 18:01
  **/
+@Aspect
+@Component
 public class LogAspect {
 
     ThreadLocal<Long> currentTime = new ThreadLocal<>();
 
-    @Resource
+    @Resource(name = "oneLogService")
     public LogService logService;
-
-
 
     /**
      * 配置切入点

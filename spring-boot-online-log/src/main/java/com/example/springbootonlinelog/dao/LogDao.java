@@ -1,6 +1,7 @@
 package com.example.springbootonlinelog.dao;
 
 import com.example.springbootonlinelog.entity.Log;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
