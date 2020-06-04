@@ -1,7 +1,7 @@
 package com.example.springbootonlinelog.utils;
 
 import cn.hutool.json.JSONObject;
-import me.zhengjie.exception.BadRequestException;
+import com.example.springbootonlinelog.exception.BadRequestException;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
