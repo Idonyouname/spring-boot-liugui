@@ -26,3 +26,4 @@
   * redis 集成redis非关系型数据库,集成key过期监听机制
   * netty 集成
   * idempotence 幂等性redis+token处理方案
+  * cache spring缓存入门
