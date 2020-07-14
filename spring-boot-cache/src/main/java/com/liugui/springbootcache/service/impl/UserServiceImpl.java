@@ -32,16 +32,17 @@ public class UserServiceImpl  implements UserService {
     private UserMapper userMapper;
 
     /**
-     * 解它总是会把数据缓存，而不会去每次做检查它是否存在，
+     * 注解 它总是会把数据缓存，而不会去每次做检查它是否存在，
      * 相比之下它的使用场景就比较少，毕竟我们希望并不是每次都把所有的数据都给查出来，
      * 我们还是希望能找到缓存的数据，直接返回，这样能提升我们的软件效率。
      */
-    @CachePut(key = "#userDo.userId")
+    @CachePut
     @Override
     public int save(UserDo userDo) throws Exception {
         return userMapper.save(userDo);
     }
 
+    @CacheEvict(allEntries = true)
     @Override
     public int delete(Integer userId) throws Exception {
         return userMapper.delete(userId);
@@ -51,7 +52,7 @@ public class UserServiceImpl  implements UserService {
      * 主要是配合@Cacheable一起使用的，它的主要作用就是清除缓存，
      * 当方法进行一些更新、删除操作的时候，这个时候就要删除缓存。
      */
-    @CacheEvict(key = "#userDo.userId")
+    @CacheEvict(allEntries = true)
     @Override
     public int update(UserDo userDo) throws Exception {
         return userMapper.update(userDo);
