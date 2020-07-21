@@ -11,6 +11,8 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
+    <packaging>pom</packaging>
+
     <groupId>com.amdox.liugui</groupId>
     <artifactId>spring-boot-liugui</artifactId>
     <version>1.0-SNAPSHOT</version>
