@@ -1,0 +1,19 @@
+server:
+  port: 9091
+
+logging:
+  level:
+    org:
+      springframework:
+        security: info
+    com:
+      liugui:
+        vueblog:
+          mapper: debug
+    root: info
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/sys_base?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowMultiQueries=true&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456

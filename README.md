@@ -15,15 +15,17 @@
   * mybatis    
   * mybaits-plus    
   * properties - 读取配置文件   
-  * rabbitMQ    
-  * shiro    
+  * rabbitMQ - 队列   
+  * shiro  - 权限框架
   * swagger2 - 接口在线文档     
   * valid - 参数验证
   * webSocket - 全双工通讯协议
   * scheduled - spring@scheduled 定时任务
-  * quartz
+  * quartz - 定时任务
   * gradle yml配置初体验
   * redis 集成redis非关系型数据库,集成key过期监听机制
-  * netty 集成
+  * netty  - 集成
   * idempotence 幂等性redis+token处理方案
-  * cache spring缓存入门
+  * cache spring 缓存入门
+  * unify-dispose 统一返回与全局异常
+  * redis-cache redis缓存
