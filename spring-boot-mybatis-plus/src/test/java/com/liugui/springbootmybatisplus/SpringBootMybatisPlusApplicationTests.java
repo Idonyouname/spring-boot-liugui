@@ -49,6 +49,14 @@ class SpringBootMybatisPlusApplicationTests {
     }
 
     @Test
+    public void deleteUser(){
+        start();
+        System.out.println("operating result:"+ userService.removeById(1));
+        end();
+        this.testSelect();
+    }
+
+    @Test
     public void addUser() {
         this.start();
         SysUser sysUser = new SysUser();
