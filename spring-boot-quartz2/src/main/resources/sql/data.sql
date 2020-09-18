@@ -1,0 +1,9 @@
+USE mc_config;
+
+CREATE TABLE `config` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `cron` VARCHAR(255) DEFAULT NULL COMMENT 'cron表达式',
+  PRIMARY KEY (`id`)
+) ENGINE=INNODB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='cron表达式配置表'
+
+INSERT INTO config(id,cron) VALUES(1,'0 0/2 * * * ?');
