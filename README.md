@@ -29,3 +29,4 @@
   * cache spring 缓存入门
   * unify-dispose 统一返回与全局异常
   * redis-cache redis缓存
+  * quartz2 - 动态定时任务
