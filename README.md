@@ -13,7 +13,7 @@
   * h2数据库   
   * jpa + thymeleaf crud    
   * mybatis    
-  * mybaits-plus    
+  * mybatis-plus    
   * properties - 读取配置文件   
   * rabbitMQ - 队列   
   * shiro  - 权限框架
