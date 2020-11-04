@@ -17,7 +17,7 @@
   * properties - 读取配置文件   
   * rabbitMQ - 队列   
   * shiro  - 权限框架
-  * swagger2 - 接口在线文档     
+  * swagger2 - 接口在线文档 2020/11/04 升级knife4j      
   * valid - 参数验证
   * webSocket - 全双工通讯协议
   * scheduled - spring@scheduled 定时任务
