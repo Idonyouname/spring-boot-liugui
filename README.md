@@ -30,3 +30,4 @@
   * unify-dispose 统一返回与全局异常
   * redis-cache redis缓存
   * quartz2 - 动态定时任务
+  * upload-download - 上传下载
